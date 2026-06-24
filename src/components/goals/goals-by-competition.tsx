@@ -1,3 +1,5 @@
+import { NumberCounter } from "@/components/motion/number-counter";
+import { Reveal } from "@/components/motion/reveal";
 import type { GoalByCompetition } from "@/data/goals";
 
 type GoalsByCompetitionProps = {
@@ -20,18 +22,18 @@ export function GoalsByCompetition({ competitions }: GoalsByCompetitionProps) {
               Competition totals show where the goals landed: Europe, domestic leagues, Portugal and the current Saudi chapter.
             </p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <Reveal className="grid gap-3 sm:grid-cols-2" stagger={0.05}>
             {competitions.map((item) => (
-              <article key={item.competition} className="border border-white/10 bg-card p-5">
+              <article key={item.competition} data-reveal-item className="border border-white/10 bg-card p-5">
                 <p className="font-mono text-4xl font-bold leading-none text-brand-orange">
-                  {item.goals}
+                  <NumberCounter value={item.goals} />
                 </p>
                 <h3 className="mt-4 font-display text-3xl uppercase leading-none text-warm">
                   {item.competition}
                 </h3>
               </article>
             ))}
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

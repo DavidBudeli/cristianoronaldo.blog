@@ -1,3 +1,5 @@
+import { NumberCounter } from "@/components/motion/number-counter";
+import { Reveal } from "@/components/motion/reveal";
 import type { GoalByYear } from "@/data/goals";
 
 type GoalsByYearProps = {
@@ -18,11 +20,13 @@ export function GoalsByYear({ years }: GoalsByYearProps) {
             The scoring rhythm.
           </h2>
         </div>
-        <div className="mt-9 overflow-x-auto border border-white/10 bg-card p-5">
+        <Reveal className="mt-9 overflow-x-auto border border-white/10 bg-card p-5">
           <div className="flex min-w-[920px] items-end gap-2">
             {years.map((year) => (
               <div key={year.year} className="flex flex-1 flex-col items-center gap-3">
-                <span className="font-mono text-xs text-muted">{year.goals}</span>
+                <span className="font-mono text-xs text-muted">
+                  <NumberCounter value={year.goals} />
+                </span>
                 <div
                   className="w-full bg-brand-orange"
                   style={{ height: `${Math.max(16, (year.goals / maxGoals) * 180)}px` }}
@@ -31,7 +35,7 @@ export function GoalsByYear({ years }: GoalsByYearProps) {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

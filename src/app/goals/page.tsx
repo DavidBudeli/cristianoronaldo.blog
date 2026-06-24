@@ -6,6 +6,7 @@ import { GoalsByCompetition } from "@/components/goals/goals-by-competition";
 import { GoalsByTeam } from "@/components/goals/goals-by-team";
 import { GoalsByYear } from "@/components/goals/goals-by-year";
 import { MilestoneGoals } from "@/components/goals/milestone-goals";
+import { Reveal } from "@/components/motion/reveal";
 import {
   goalArchiveNote,
   goalLog,
@@ -17,6 +18,11 @@ import {
   milestoneGoals,
 } from "@/data/goals";
 import { buildMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/lib/json-ld";
+import {
+  collectionPageStructuredData,
+  goalsDatasetStructuredData,
+} from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Cristiano Ronaldo Goals | Complete CR7 Goal Archive",
@@ -30,17 +36,26 @@ export default function GoalsPage() {
   return (
     <>
       <GoalUniverseHero summary={goalSummary} years={goalsByYear} milestones={milestoneGoals} />
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <Reveal as="section" className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <GoalConstellation years={goalsByYear} milestones={milestoneGoals} />
         </div>
-      </section>
+      </Reveal>
       <GoalsByTeam teams={goalsByTeam} />
       <GoalsByCompetition competitions={goalsByCompetition} />
       <GoalsByYear years={goalsByYear} />
       <MilestoneGoals milestones={milestoneGoals} />
       <GoalLogTable items={goalLog} />
       <GoalSources sources={goalSources} note={goalArchiveNote} />
+      <JsonLd
+        data={collectionPageStructuredData({
+          name: "Cristiano Ronaldo Goals",
+          description:
+            "Cristiano Ronaldo goals by club, country, competition, year and milestone.",
+          path: "/goals",
+        })}
+      />
+      <JsonLd data={goalsDatasetStructuredData()} />
     </>
   );
 }

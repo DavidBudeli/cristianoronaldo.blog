@@ -1,3 +1,5 @@
+import { NumberCounter } from "@/components/motion/number-counter";
+import { Reveal } from "@/components/motion/reveal";
 import type { ClubStatRow } from "@/data/stats";
 
 type ClubBreakdownTableProps = {
@@ -20,7 +22,7 @@ export function ClubBreakdownTable({ rows }: ClubBreakdownTableProps) {
           </p>
         </div>
 
-        <div className="mt-9 max-w-full overflow-x-auto border border-white/10 bg-card">
+        <Reveal className="mt-9 max-w-full overflow-x-auto border border-white/10 bg-card">
           <table className="w-full min-w-[760px] border-collapse text-left">
             <thead>
               <tr className="border-b border-white/10 bg-card-elevated text-[0.68rem] uppercase tracking-[0.18em] text-muted">
@@ -41,10 +43,10 @@ export function ClubBreakdownTable({ rows }: ClubBreakdownTableProps) {
                     {row.period}
                   </td>
                   <td className="px-5 py-5 font-mono text-2xl font-bold text-brand-orange">
-                    {row.goals}
+                    <NumberCounter value={row.goals} />
                   </td>
                   <td className="px-5 py-5 font-mono text-2xl font-bold text-warm">
-                    {row.appearances}
+                    <NumberCounter value={row.appearances} />
                   </td>
                   <td className="max-w-sm px-5 py-5 text-sm leading-7 text-muted">
                     {row.notes}
@@ -53,7 +55,7 @@ export function ClubBreakdownTable({ rows }: ClubBreakdownTableProps) {
               ))}
             </tbody>
           </table>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

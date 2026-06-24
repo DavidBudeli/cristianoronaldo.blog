@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { LanguageProvider } from "@/components/i18n/language-provider";
+import { MotionProvider } from "@/components/motion/motion-provider";
 import { blogJsonLd, JsonLd } from "@/lib/json-ld";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -38,15 +39,17 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="pt-BR"
       className={`${inter.variable} ${barlowCondensed.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <LanguageProvider>
-          <SiteHeader />
-          <main className="flex-1">{children}</main>
-          <SiteFooter />
-          <JsonLd data={blogJsonLd()} />
+          <MotionProvider>
+            <SiteHeader />
+            <main className="flex-1">{children}</main>
+            <SiteFooter />
+            <JsonLd data={blogJsonLd()} />
+          </MotionProvider>
         </LanguageProvider>
       </body>
     </html>

@@ -21,7 +21,7 @@ export function MobileNav() {
       {open ? (
         <div
           id="mobile-navigation"
-          className="absolute left-4 right-4 top-[78px] z-40 border border-white/12 bg-deep-black/95 p-4 shadow-2xl shadow-black/50"
+          className="mobile-menu-enter absolute left-4 right-4 top-[78px] z-40 border border-white/12 bg-deep-black/95 p-4 shadow-2xl shadow-black/50"
         >
           <nav className="grid gap-2" aria-label="Mobile navigation">
             {siteConfig.navigation.map((item) => (

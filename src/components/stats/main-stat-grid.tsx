@@ -1,4 +1,5 @@
 import type { StatCard as StatCardData } from "@/data/stats";
+import { Reveal } from "@/components/motion/reveal";
 import { StatCard } from "@/components/stats/stat-card";
 
 type MainStatGridProps = {
@@ -23,11 +24,13 @@ export function MainStatGrid({ eyebrow, title, text, stats }: MainStatGridProps)
             <p className="mt-5 text-base leading-8 text-muted">{text}</p>
           ) : null}
         </div>
-        <div className="mt-9 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <Reveal className="mt-9 grid gap-4 md:grid-cols-2 xl:grid-cols-4" stagger={0.06}>
           {stats.map((stat, index) => (
-            <StatCard key={stat.id} stat={stat} index={index} />
+            <div key={stat.id} data-reveal-item>
+              <StatCard stat={stat} index={index} />
+            </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

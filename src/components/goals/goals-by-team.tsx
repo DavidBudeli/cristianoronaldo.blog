@@ -1,3 +1,5 @@
+import { NumberCounter } from "@/components/motion/number-counter";
+import { Reveal } from "@/components/motion/reveal";
 import type { GoalByTeam } from "@/data/goals";
 
 type GoalsByTeamProps = {
@@ -19,11 +21,11 @@ export function GoalsByTeam({ teams }: GoalsByTeamProps) {
             Every shirt, every chapter.
           </h2>
         </div>
-        <div className="mt-9 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <Reveal className="mt-9 grid gap-4 md:grid-cols-2 xl:grid-cols-3" stagger={0.06}>
           {teams.map((team) => {
             const value = typeof team.goals === "number" ? team.goals : Number.parseInt(team.goals, 10);
             return (
-              <article key={team.team} className="border border-white/10 bg-card p-5 sm:p-6">
+              <article key={team.team} data-reveal-item className="border border-white/10 bg-card p-5 sm:p-6">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h3 className="font-display text-4xl uppercase leading-none text-warm">
@@ -36,7 +38,7 @@ export function GoalsByTeam({ teams }: GoalsByTeamProps) {
                   </p>
                 </div>
                 <p className="mt-8 font-mono text-5xl font-bold leading-none text-brand-orange">
-                  {team.goals}
+                  <NumberCounter value={team.goals} />
                 </p>
                 <div className="mt-5 h-2 bg-white/10">
                   <div
@@ -47,7 +49,7 @@ export function GoalsByTeam({ teams }: GoalsByTeamProps) {
               </article>
             );
           })}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

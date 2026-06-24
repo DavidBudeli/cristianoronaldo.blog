@@ -1,7 +1,14 @@
-import Link from "next/link";
+import { MagneticButton } from "@/components/motion/magnetic-button";
+import { NumberCounter } from "@/components/motion/number-counter";
+import { Reveal } from "@/components/motion/reveal";
 import { PageHero } from "@/components/page-hero";
 import { recordItems } from "@/data/records";
+import { JsonLd } from "@/lib/json-ld";
 import { buildMetadata } from "@/lib/metadata";
+import {
+  collectionPageStructuredData,
+  recordsItemListStructuredData,
+} from "@/lib/structured-data";
 
 const filters = ["All", "Champions League", "Portugal", "Clubs", "Awards", "Longevity"];
 
@@ -31,14 +38,14 @@ export default function RecordsPage() {
             </a>
           ))}
         </div>
-        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <Reveal className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
           {recordItems.map((record) => (
-            <article key={record.id} id={record.category.toLowerCase().replaceAll(" ", "-")} className="border border-white/10 bg-card p-5 sm:p-6">
+            <article key={record.id} data-reveal-item id={record.category.toLowerCase().replaceAll(" ", "-")} className="border border-white/10 bg-card p-5 sm:p-6">
               <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-brand-orange">
                 {record.category}
               </p>
               <p className="mt-6 font-mono text-5xl font-bold leading-none text-warm">
-                {record.value}
+                <NumberCounter value={record.value} />
               </p>
               <h2 className="mt-5 font-display text-3xl uppercase leading-none text-warm">
                 {record.title}
@@ -46,8 +53,8 @@ export default function RecordsPage() {
               <p className="mt-4 text-sm leading-7 text-muted">{record.description}</p>
             </article>
           ))}
-        </div>
-        <div className="mt-10 border border-white/10 bg-card p-6 sm:flex sm:items-center sm:justify-between">
+        </Reveal>
+        <Reveal className="mt-10 border border-white/10 bg-card p-6 sm:flex sm:items-center sm:justify-between">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-orange">
               Goal archive
@@ -56,14 +63,20 @@ export default function RecordsPage() {
               Explore the goals behind the records.
             </h2>
           </div>
-          <Link
-            href="/goals"
-            className="mt-6 inline-flex rounded-full border border-brand-orange bg-brand-orange px-5 py-3 text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-black sm:mt-0"
-          >
+          <MagneticButton href="/goals" className="mt-6 px-5 py-3 sm:mt-0">
             Open Goal Universe
-          </Link>
-        </div>
+          </MagneticButton>
+        </Reveal>
       </section>
+      <JsonLd
+        data={collectionPageStructuredData({
+          name: "Cristiano Ronaldo Records",
+          description:
+            "The milestones and records that define Cristiano Ronaldo's career.",
+          path: "/records",
+        })}
+      />
+      <JsonLd data={recordsItemListStructuredData()} />
     </>
   );
 }

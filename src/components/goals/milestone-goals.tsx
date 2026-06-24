@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/motion/reveal";
 import type { MilestoneGoal } from "@/data/goals";
 
 type MilestoneGoalsProps = {
@@ -16,9 +17,9 @@ export function MilestoneGoals({ milestones }: MilestoneGoalsProps) {
             Numbers that became moments.
           </h2>
         </div>
-        <div className="mt-9 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <Reveal className="mt-9 grid gap-4 md:grid-cols-2 xl:grid-cols-4" stagger={0.06}>
           {milestones.map((goal) => (
-            <article key={goal.milestone} className="border border-white/10 bg-card p-5 sm:p-6">
+            <article key={goal.milestone} data-reveal-item className="border border-white/10 bg-card p-5 sm:p-6">
               <p className="font-mono text-xs text-brand-orange">{goal.date}</p>
               <h3 className="mt-4 font-display text-4xl uppercase leading-none text-warm">
                 {goal.milestone}
@@ -29,7 +30,7 @@ export function MilestoneGoals({ milestones }: MilestoneGoalsProps) {
               <p className="mt-4 text-sm leading-7 text-muted">{goal.description}</p>
             </article>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+import { NumberCounter } from "@/components/motion/number-counter";
 import type { StatCard as StatCardData } from "@/data/stats";
 
 const categoryLabels: Record<StatCardData["category"], string> = {
@@ -29,7 +30,7 @@ export function StatCard({ stat, index }: StatCardProps) {
       </div>
       <div className="mt-8">
         <p className="font-mono text-5xl font-bold leading-none text-warm sm:text-6xl">
-          {stat.value}
+          <NumberCounter value={stat.value} />
         </p>
         <h3 className="mt-5 font-display text-3xl uppercase leading-none text-warm">
           {stat.label}

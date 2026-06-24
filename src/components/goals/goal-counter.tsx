@@ -1,3 +1,5 @@
+import { NumberCounter } from "@/components/motion/number-counter";
+
 type GoalCounterProps = {
   totalGoals: number;
   lastChecked: string;
@@ -10,7 +12,7 @@ export function GoalCounter({ totalGoals, lastChecked }: GoalCounterProps) {
         Total goals
       </p>
       <p className="mt-4 font-mono text-6xl font-bold leading-none text-warm sm:text-8xl">
-        {totalGoals.toLocaleString("en-US")}
+        <NumberCounter value={totalGoals.toLocaleString("en-US")} />
       </p>
       <p className="mt-4 text-xs leading-6 text-muted">
         Last checked {lastChecked}

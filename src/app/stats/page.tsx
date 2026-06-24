@@ -1,10 +1,11 @@
-import Link from "next/link";
 import { ClubBreakdownTable } from "@/components/stats/club-breakdown-table";
 import { MainStatGrid } from "@/components/stats/main-stat-grid";
 import { RecordsSection } from "@/components/stats/records-section";
 import { SourcePanel } from "@/components/stats/source-panel";
 import { StatsHero } from "@/components/stats/stats-hero";
 import { UpdatePolicy } from "@/components/stats/update-policy";
+import { MagneticButton } from "@/components/motion/magnetic-button";
+import { Reveal } from "@/components/motion/reveal";
 import {
   awardsHonors,
   clubBreakdown,
@@ -17,6 +18,11 @@ import {
   statsValidationCopy,
 } from "@/data/stats";
 import { buildMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/lib/json-ld";
+import {
+  collectionPageStructuredData,
+  statsDatasetStructuredData,
+} from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "CR7 Statistics | Career Goals, Records and Milestones",
@@ -38,17 +44,14 @@ export default function StatsPage() {
         updateNote={statsUpdateNote}
       />
       <section className="border-b border-white/10 px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <Reveal className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-2xl text-sm leading-7 text-muted">
             Want the scoring archive behind the headline total?
           </p>
-          <Link
-            href="/goals"
-            className="inline-flex w-fit rounded-full border border-brand-orange bg-brand-orange px-5 py-3 text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-black"
-          >
+          <MagneticButton href="/goals" className="w-fit px-5 py-3">
             Open Goal Universe
-          </Link>
-        </div>
+          </MagneticButton>
+        </Reveal>
       </section>
       <MainStatGrid
         eyebrow="Main Numbers"
@@ -78,6 +81,15 @@ export default function StatsPage() {
       />
       <SourcePanel sources={statSources} />
       <UpdatePolicy copy={statsValidationCopy} />
+      <JsonLd
+        data={collectionPageStructuredData({
+          name: "CR7 Statistics",
+          description:
+            "Career numbers, records and performance milestones across clubs, Portugal and European competitions.",
+          path: "/stats",
+        })}
+      />
+      <JsonLd data={statsDatasetStructuredData()} />
     </>
   );
 }

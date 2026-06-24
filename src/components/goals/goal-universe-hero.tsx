@@ -1,5 +1,7 @@
 import { GoalConstellation } from "@/components/goals/goal-constellation";
 import { GoalCounter } from "@/components/goals/goal-counter";
+import { ParallaxLayer } from "@/components/motion/parallax-layer";
+import { Reveal } from "@/components/motion/reveal";
 import type { GoalByYear, GoalSummary, MilestoneGoal } from "@/data/goals";
 
 type GoalUniverseHeroProps = {
@@ -14,7 +16,7 @@ export function GoalUniverseHero({ summary, years, milestones }: GoalUniverseHer
   return (
     <section className="overflow-hidden border-b border-white/10 bg-absolute-black">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 lg:py-24">
-        <div className="min-w-0">
+        <Reveal className="min-w-0" variant="clip-reveal">
           <p className="inline-flex border border-brand-orange/70 bg-brand-orange px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.18em] text-white">
             All Goals Archive
           </p>
@@ -38,11 +40,13 @@ export function GoalUniverseHero({ summary, years, milestones }: GoalUniverseHer
               </a>
             ))}
           </div>
-        </div>
-        <div className="grid min-w-0 gap-4">
+        </Reveal>
+        <Reveal className="grid min-w-0 gap-4" stagger={0.08}>
           <GoalCounter totalGoals={summary.totalGoals} lastChecked={summary.lastChecked} />
-          <GoalConstellation years={years} milestones={milestones} compact />
-        </div>
+          <ParallaxLayer y={-6}>
+            <GoalConstellation years={years} milestones={milestones} compact />
+          </ParallaxLayer>
+        </Reveal>
       </div>
     </section>
   );

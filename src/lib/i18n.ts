@@ -1,6 +1,6 @@
 export type Locale = "en" | "pt-BR";
 
-export const defaultLocale: Locale = "en";
+export const defaultLocale: Locale = "pt-BR";
 export const localeStorageKey = "cr7-blog-locale";
 
 export const portugueseTranslations: Record<string, string> = {

@@ -1,4 +1,7 @@
 import Image from "next/image";
+import { NumberCounter } from "@/components/motion/number-counter";
+import { Reveal } from "@/components/motion/reveal";
+import { TimelineProgress } from "@/components/motion/timeline-progress";
 import { PageHero } from "@/components/page-hero";
 import { careerPhases } from "@/data/career";
 import { buildMetadata } from "@/lib/metadata";
@@ -18,10 +21,11 @@ export default function CareerPage() {
         title="Cristiano Ronaldo Career Timeline"
         text="From Madeira and Sporting CP to Manchester, Madrid, Turin, Riyadh and Portugal."
       />
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-5">
+      <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <TimelineProgress className="absolute bottom-16 left-6 top-16 hidden w-px sm:left-8 md:block lg:left-10" />
+        <div className="relative grid gap-5 md:pl-8">
           {careerPhases.map((phase, index) => (
-            <article key={phase.id} className="grid overflow-hidden border border-white/10 bg-card lg:grid-cols-[0.42fr_0.58fr]">
+            <Reveal key={phase.id} id={phase.id} as="article" className="grid scroll-mt-28 overflow-hidden border border-white/10 bg-card lg:grid-cols-[0.42fr_0.58fr]">
               <div className="relative min-h-72">
                 <Image
                   src={phase.image}
@@ -41,13 +45,17 @@ export default function CareerPage() {
                 <div className="mt-6 grid gap-3 sm:grid-cols-2">
                   {phase.goals ? (
                     <div className="border border-white/10 bg-absolute-black p-4">
-                      <p className="font-mono text-3xl font-bold text-brand-orange">{phase.goals}</p>
+                      <p className="font-mono text-3xl font-bold text-brand-orange">
+                        <NumberCounter value={phase.goals} />
+                      </p>
                       <p className="text-xs uppercase tracking-[0.16em] text-muted">Goals</p>
                     </div>
                   ) : null}
                   {phase.appearances ? (
                     <div className="border border-white/10 bg-absolute-black p-4">
-                      <p className="font-mono text-3xl font-bold text-warm">{phase.appearances}</p>
+                      <p className="font-mono text-3xl font-bold text-warm">
+                        <NumberCounter value={phase.appearances} />
+                      </p>
                       <p className="text-xs uppercase tracking-[0.16em] text-muted">Appearances</p>
                     </div>
                   ) : null}
@@ -60,7 +68,7 @@ export default function CareerPage() {
                   ))}
                 </div>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </section>

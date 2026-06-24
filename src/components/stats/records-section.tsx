@@ -1,3 +1,5 @@
+import { NumberCounter } from "@/components/motion/number-counter";
+import { Reveal } from "@/components/motion/reveal";
 import type { CompetitionRecord } from "@/data/stats";
 
 type RecordsSectionProps = {
@@ -30,17 +32,18 @@ export function RecordsSection({
             </h2>
             <p className="mt-5 text-base leading-8 text-muted">{text}</p>
           </div>
-          <div className="grid gap-4 md:grid-cols-2">
+          <Reveal className="grid gap-4 md:grid-cols-2" stagger={0.06}>
             {records.map((record) => (
               <article
                 key={`${record.competition}-${record.record}`}
+                data-reveal-item
                 className="border border-white/10 bg-card p-5 transition hover:border-brand-orange/70 hover:bg-card-elevated sm:p-6"
               >
                 <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">
                   {record.competition}
                 </p>
                 <p className="mt-5 font-mono text-4xl font-bold leading-none text-brand-orange sm:text-5xl">
-                  {record.value}
+                  <NumberCounter value={record.value} />
                 </p>
                 <h3 className="mt-5 font-display text-3xl uppercase leading-none text-warm">
                   {record.record}
@@ -50,7 +53,7 @@ export function RecordsSection({
                 </p>
               </article>
             ))}
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

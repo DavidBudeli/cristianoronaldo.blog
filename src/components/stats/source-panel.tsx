@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/motion/reveal";
 import type { StatSource } from "@/data/stats";
 
 type SourcePanelProps = {
@@ -22,10 +23,11 @@ export function SourcePanel({ sources }: SourcePanelProps) {
               </p>
             </div>
 
-            <div className="grid gap-3">
+            <Reveal className="grid gap-3" stagger={0.05}>
               {sources.map((source) => (
                 <a
                   key={source.id}
+                  data-reveal-item
                   href={source.url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -47,7 +49,7 @@ export function SourcePanel({ sources }: SourcePanelProps) {
                   </span>
                 </a>
               ))}
-            </div>
+            </Reveal>
           </div>
         </div>
       </div>

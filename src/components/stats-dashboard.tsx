@@ -1,3 +1,4 @@
+import { NumberCounter } from "@/components/motion/number-counter";
 import { signatureNumbers } from "@/data/site";
 
 export function StatsDashboard() {
@@ -6,7 +7,7 @@ export function StatsDashboard() {
       {signatureNumbers.map((item) => (
         <div key={item.label} className="border border-white/10 bg-card p-5">
           <p className="font-mono text-5xl font-bold text-gold-light">
-            {item.value}
+            <NumberCounter value={item.value} />
           </p>
           <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-warm">
             {item.label}

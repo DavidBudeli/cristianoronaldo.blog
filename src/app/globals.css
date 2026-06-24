@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-absolute-black: #000000;
+  --color-deep-black: #050505;
+  --color-graphite: #0b0b0b;
+  --color-card: #101010;
+  --color-card-elevated: #171717;
+  --color-warm: #ffffff;
+  --color-muted: #b2aca4;
+  --color-muted-dark: #77716a;
+  --color-gold: #ff5a1f;
+  --color-gold-light: #ffffff;
+  --color-red-deep: #8e1018;
+  --color-brand-orange: #ff5a1f;
+  --font-sans: "Inter", Arial, sans-serif;
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  background: var(--background);
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: break-word;
+}
+
+a,
+button,
+input,
+textarea {
+  outline-color: #ff5a1f;
+  outline-offset: 3px;
+}
+
+::selection {
+  background: #ff5a1f;
+  color: #000000;
+}
+
+.min-h-inherit {
+  min-height: inherit;
+}

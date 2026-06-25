@@ -15,7 +15,7 @@ export function MobileNav() {
       : "Open Cristiano Ronaldo interactive goals experience on Perplexity";
 
   return (
-    <div className="md:hidden">
+    <div className="xl:hidden">
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
@@ -38,6 +38,7 @@ export function MobileNav() {
                   href={item.href}
                   ariaLabel={goalsAriaLabel}
                   onClick={() => setOpen(false)}
+                  showIndicator={false}
                   className="border border-white/8 bg-white/[0.03] px-4 py-3 text-sm font-medium text-warm transition hover:border-gold hover:text-gold"
                 >
                   {item.label}

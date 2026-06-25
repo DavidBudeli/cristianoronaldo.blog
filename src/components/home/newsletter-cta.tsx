@@ -1,4 +1,4 @@
-import { NewsletterForm } from "@/components/newsletter-form";
+import { NewsletterForm } from "@/components/newsletter/newsletter-form";
 
 export function NewsletterCta() {
   return (

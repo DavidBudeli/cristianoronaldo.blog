@@ -61,7 +61,7 @@ export function useGsapReveal<T extends HTMLElement>({
             clearProps: "transform,opacity,clipPath",
             scrollTrigger: {
               trigger: element,
-              start: "top 86%",
+              start: "top 88%",
               once,
             },
           },

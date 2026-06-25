@@ -25,8 +25,29 @@ Open `http://localhost:3000`.
 ```bash
 npm run lint
 npm run typecheck
+npm run check:i18n
 npm run build
 ```
+
+## Brand icons
+
+CR7 favicon, PWA icons, Apple touch icon and OG image are generated from `public/brand/cr7-logo.svg`.
+
+```bash
+npm run generate:icons
+```
+
+## Newsletter setup
+
+Newsletter signups are handled through the server-side route `/api/newsletter` and synced to Brevo. Configure these environment variables before testing or deploying:
+
+```bash
+BREVO_API_KEY=
+BREVO_NEWSLETTER_LIST_ID=
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+See `docs/newsletter-setup.md` for the Brevo list, attributes, campaign and domain-authentication checklist.
 
 ## Hostinger Node.js Web App Deployment
 
@@ -44,6 +65,8 @@ Recommended Hostinger settings:
 Recommended production environment variable:
 
 ```bash
+BREVO_API_KEY=your-production-brevo-api-key
+BREVO_NEWSLETTER_LIST_ID=123
 NEXT_PUBLIC_SITE_URL=https://your-domain.com
 ```
 

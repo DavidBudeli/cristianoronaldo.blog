@@ -1,6 +1,6 @@
 import { ArticleGrid } from "@/components/article-grid";
 import { FanCommunityPreview } from "@/components/home/fan-community-preview";
-import { NewsletterForm } from "@/components/newsletter-form";
+import { NewsletterForm } from "@/components/newsletter/newsletter-form";
 import { PageHero } from "@/components/page-hero";
 import { getArticlesByCategory } from "@/lib/articles";
 import { buildMetadata } from "@/lib/metadata";

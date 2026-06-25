@@ -1,173 +1,37 @@
+import { englishTranslations } from "@/i18n/dictionaries/en";
+import { portugueseTranslations } from "@/i18n/dictionaries/pt-BR";
+
 export type Locale = "en" | "pt-BR";
 
 export const defaultLocale: Locale = "pt-BR";
 export const localeStorageKey = "cr7-blog-locale";
 
-export const portugueseTranslations: Record<string, string> = {
-  "Home": "Início",
-  "Blog": "Blog",
-  "Career": "Carreira",
-  "Goals": "Gols",
-  "Stats": "Estatísticas",
-  "Records": "Recordes",
-  "Mindset": "Mentalidade",
-  "Fans": "Fãs",
-  "Search": "Buscar",
-  "Subscribe": "Assinar",
-  "Close": "Fechar",
-  "Privacy": "Privacidade",
-  "Legal": "Legal",
-  "Privacy Policy": "Política de Privacidade",
-  "Developed by": "Desenvolvido por",
-  "Explore": "Explorar",
-  "More": "Mais",
-  "All Rights Reserved": "Todos os direitos reservados",
-  "© Cristiano Ronaldo, All Rights Reserved": "© Cristiano Ronaldo, Todos os direitos reservados",
-  "Official Blog": "Blog Oficial",
-  "Inside the Standard.": "Dentro do padrão.",
-  "Stories, records, career milestones and the mindset behind Cristiano Ronaldo's global football legacy.": "Histórias, recordes, marcos de carreira e a mentalidade por trás do legado global de Cristiano Ronaldo no futebol.",
-  "Stories, records, career milestones and the mindset behind Cristiano Ronaldo’s global football legacy.": "Histórias, recordes, marcos de carreira e a mentalidade por trás do legado global de Cristiano Ronaldo no futebol.",
-  "Read Latest Stories": "Ler histórias recentes",
-  "Explore Career": "Explorar carreira",
-  "Featured Story": "História em destaque",
-  "The story leading the archive.": "A história principal do arquivo.",
-  "Latest Stories": "Histórias recentes",
-  "News, features and editorial stories about Cristiano Ronaldo's career, records and legacy.": "Notícias, matérias e histórias editoriais sobre a carreira, os recordes e o legado de Cristiano Ronaldo.",
-  "Features and record-led stories from across Cristiano Ronaldo's career.": "Matérias e histórias guiadas por recordes de toda a carreira de Cristiano Ronaldo.",
-  "Goal Universe": "Universo de Gols",
-  "Open Goal Universe": "Abrir Universo de Gols",
-  "Explore all goals": "Explorar todos os gols",
-  "Open interactive goals experience": "Abrir experiência interativa de gols",
-  "Interactive goals": "Gols interativos",
-  "Open interactive goals experience.": "Abrir experiência interativa de gols.",
-  "tracked goals.": "gols rastreados.",
-  "Explore goals by club, country, competition, year and milestone in a visual CR7 scoring archive.": "Explore gols por clube, seleção, competição, ano e marco em um arquivo visual de gols do CR7.",
-  "Record Numbers": "Números de recorde",
-  "Numbers that shaped modern football.": "Números que moldaram o futebol moderno.",
-  "European Records": "Recordes europeus",
-  "European nights, record totals.": "Noites europeias, totais históricos.",
-  "Career Highlights": "Destaques da carreira",
-  "Explore the major chapters.": "Explore os grandes capítulos.",
-  "All Goals Archive": "Arquivo de todos os gols",
-  "Explore Cristiano Ronaldo's goals by club, country, competition, year and milestone.": "Explore os gols de Cristiano Ronaldo por clube, seleção, competição, ano e marco.",
-  "Every goal tells a chapter. Explore the numbers, eras and milestones behind Cristiano Ronaldo's scoring legacy.": "Cada gol conta um capítulo. Explore os números, eras e marcos por trás do legado artilheiro de Cristiano Ronaldo.",
-  "Every shirt, every chapter.": "Cada camisa, cada capítulo.",
-  "Goals by Team": "Gols por equipe",
-  "Goals by Competition": "Gols por competição",
-  "The arenas of the archive.": "As arenas do arquivo.",
-  "Competition totals show where the goals landed: Europe, domestic leagues, Portugal and the current Saudi chapter.": "Os totais por competição mostram onde os gols aconteceram: Europa, ligas nacionais, Portugal e o capítulo saudita atual.",
-  "Goals by Year": "Gols por ano",
-  "The scoring rhythm.": "O ritmo dos gols.",
-  "Milestone Goals": "Gols históricos",
-  "Numbers that became moments.": "Números que viraram momentos.",
-  "Goal Log": "Registro de gols",
-  "Search the archive.": "Buscar no arquivo.",
-  "A structured sample log for milestone and source-linked goals, ready to expand into a complete match-by-match archive.": "Um registro estruturado de gols históricos e ligados a fontes, pronto para expandir para um arquivo completo jogo a jogo.",
-  "Sources": "Fontes",
-  "Public record trail.": "Trilha de registros públicos.",
-  "Goal totals are maintained from public competition, club and editorial sources and should be reviewed after each match.": "Os totais de gols são mantidos com fontes públicas de competições, clubes e editoriais e devem ser revisados após cada partida.",
-  "Total goals": "Total de gols",
-  "Last checked": "Última checagem",
-  "Goal Constellation": "Constelação de gols",
-  "Seasons as stars.": "Temporadas como estrelas.",
-  "Points represent season totals and selected milestones.": "Os pontos representam totais por temporada e marcos selecionados.",
-  "All": "Todos",
-  "Clubs": "Clubes",
-  "Portugal": "Portugal",
-  "Champions League": "Champions League",
-  "Real Madrid": "Real Madrid",
-  "Manchester United": "Manchester United",
-  "Al Nassr": "Al Nassr",
-  "Team": "Equipe",
-  "Opponent": "Adversário",
-  "Competition": "Competição",
-  "Notes": "Notas",
-  "Date": "Data",
-  "Goal": "Gol",
-  "All teams": "Todas as equipes",
-  "All competitions": "Todas as competições",
-  "All years": "Todos os anos",
-  "Search opponent, team or notes": "Buscar adversário, equipe ou notas",
-  "No goals match those filters.": "Nenhum gol corresponde a esses filtros.",
-  "Latest tracked goal": "Último gol rastreado",
-  "Official Stats Hub": "Hub oficial de estatísticas",
-  "CR7 Statistics": "Estatísticas CR7",
-  "Career numbers, records and performance milestones across clubs, Portugal and European competitions.": "Números de carreira, recordes e marcos de performance por clubes, Portugal e competições europeias.",
-  "Want the scoring archive behind the headline total?": "Quer ver o arquivo de gols por trás do número principal?",
-  "Main Numbers": "Números principais",
-  "A high-level view of the totals and honors that define Cristiano Ronaldo's career profile.": "Uma visão geral dos totais e conquistas que definem a carreira de Cristiano Ronaldo.",
-  "Champions League and UEFA club competition records that remain central to the CR7 legacy.": "Recordes da Champions League e de competições de clubes da UEFA que seguem centrais no legado CR7.",
-  "International numbers across caps, goals and major tournament milestones.": "Números internacionais em jogos, gols e grandes marcos de torneios.",
-  "Club Breakdown": "Divisão por clube",
-  "Goals by shirt.": "Gols por camisa.",
-  "A compact view of the defining teams and national-team chapter behind the scoring total.": "Uma visão compacta das equipes e da seleção por trás do total de gols.",
-  "Awards & Honors": "Prêmios e conquistas",
-  "Major individual, club and international honors from a career built across football's biggest stages.": "Grandes conquistas individuais, por clubes e pela seleção em uma carreira nos maiores palcos do futebol.",
-  "Sources & Validation": "Fontes e validação",
-  "Verified trail.": "Trilha verificada.",
-  "Public source links are kept with publisher and review date so the page can be updated cleanly as totals move.": "Links de fontes públicas são mantidos com editor e data de revisão para atualizar a página conforme os totais mudam.",
-  "Open source": "Abrir fonte",
-  "Career Goals": "Gols na carreira",
-  "Senior Appearances": "Jogos profissionais",
-  "Champions League Goals": "Gols na Champions League",
-  "Champions League Appearances": "Jogos na Champions League",
-  "UEFA Club Competition Goals": "Gols em competições UEFA de clubes",
-  "Ballon d'Or": "Bola de Ouro",
-  "Champions League Titles": "Títulos de Champions League",
-  "Portugal Caps": "Jogos por Portugal",
-  "Portugal Goals": "Gols por Portugal",
-  "Real Madrid Goals": "Gols pelo Real Madrid",
-  "Juventus Goals": "Gols pela Juventus",
-  "Manchester United Goals": "Gols pelo Manchester United",
-  "Read Story": "Ler história",
-  "Featured": "Destaque",
-  "Related Stories": "Histórias relacionadas",
-  "Story Archive": "Arquivo de histórias",
-  "A chronological index of CR7 Blog stories.": "Um índice cronológico das histórias do CR7 Blog.",
-  "Story categories.": "Categorias de histórias.",
-  "Explore CR7 Blog coverage by career, records, Portugal, mindset, legacy and fans.": "Explore a cobertura do CR7 Blog por carreira, recordes, Portugal, mentalidade, legado e fãs.",
-  "Category": "Categoria",
-  "Stories grouped by tag.": "Histórias agrupadas por tag.",
-  "Search stories": "Buscar histórias",
-  "Search articles, categories, tags, teams or records": "Buscar artigos, categorias, tags, equipes ou recordes",
-  "No matching stories found.": "Nenhuma história encontrada.",
-  "Get the latest CR7 stories.": "Receba as últimas histórias do CR7.",
-  "Choose the updates you want: news, records, career chapters, Portugal and fan stories.": "Escolha as atualizações que deseja: notícias, recordes, capítulos da carreira, Portugal e histórias de fãs.",
-  "Preferences": "Preferências",
-  "News": "Notícias",
-  "Thanks. You're on the list.": "Obrigado. Você está na lista.",
-  "Email address": "Endereço de e-mail",
-  "Discipline, longevity and performance through the lens of a career built on consistency.": "Disciplina, longevidade e performance pela lente de uma carreira construída na consistência.",
-  "Discipline. Longevity. Pressure.": "Disciplina. Longevidade. Pressão.",
-  "The mindset story is told through public evidence: years at the top, adaptation across leagues and records that kept moving after every career chapter.": "A história de mentalidade é contada por evidências públicas: anos no topo, adaptação entre ligas e recordes que seguiram avançando a cada capítulo.",
-  "Discipline": "Disciplina",
-  "Longevity": "Longevidade",
-  "Adaptation": "Adaptação",
-  "Pressure": "Pressão",
-  "Consistency": "Consistência",
-  "For the Fans": "Para os fãs",
-  "A global football community connected by every chapter of Cristiano Ronaldo's career.": "Uma comunidade global de futebol conectada por cada capítulo da carreira de Cristiano Ronaldo.",
-  "Built around a global football community.": "Construído em torno de uma comunidade global de futebol.",
-  "From Portugal pride to club memories, the CR7 story is followed by fans across eras, leagues and continents.": "Do orgulho por Portugal às memórias por clubes, a história CR7 é acompanhada por fãs entre eras, ligas e continentes.",
-  "Explore fans": "Explorar fãs",
-  "Global Support": "Apoio global",
-  "Matchday Memories": "Memórias de jogo",
-  "Portugal Pride": "Orgulho de Portugal",
-  "Iconic Celebrations": "Celebrações icônicas",
-  "The milestones and records that define Cristiano Ronaldo's career.": "Os marcos e recordes que definem a carreira de Cristiano Ronaldo.",
-  "Explore the goals behind the records.": "Explore os gols por trás dos recordes.",
-  "Cristiano Ronaldo Career Timeline": "Linha do tempo da carreira de Cristiano Ronaldo",
-  "From Madeira and Sporting CP to Manchester, Madrid, Turin, Riyadh and Portugal.": "Da Madeira e do Sporting CP a Manchester, Madrid, Turim, Riade e Portugal.",
-  "Appearances": "Jogos",
-  "Legacy": "Legado",
-  "Records, moments and milestones that shaped Cristiano Ronaldo's place in football history.": "Recordes, momentos e marcos que moldaram o lugar de Cristiano Ronaldo na história do futebol.",
-  "Chapters": "Capítulos",
-  "Records that define an era.": "Recordes que definem uma era.",
-  "About": "Sobre",
-  "A public editorial space for Cristiano Ronaldo stories, records, career milestones and fan culture.": "Um espaço editorial público para histórias, recordes, marcos de carreira e cultura dos fãs de Cristiano Ronaldo.",
-  "CR7 Blog follows the public record of Cristiano Ronaldo's football life: club chapters, Portugal milestones, European records, goals, mindset and fan culture. Important numbers are connected to public competition, club, database and news sources.": "O CR7 Blog acompanha o registro público da vida futebolística de Cristiano Ronaldo: capítulos por clubes, marcos por Portugal, recordes europeus, gols, mentalidade e cultura dos fãs. Números importantes são conectados a fontes públicas de competições, clubes, bases de dados e notícias.",
-};
+export { englishTranslations, portugueseTranslations };
 
-export const englishTranslations = Object.fromEntries(
-  Object.entries(portugueseTranslations).map(([english, portuguese]) => [portuguese, english]),
-);
+export function getDictionary(locale: Locale) {
+  return (locale === "pt-BR" ? portugueseTranslations : englishTranslations) as Record<
+    string,
+    string
+  >;
+}
+
+export function translateText(value: string, locale: Locale) {
+  const trimmed = value.trim();
+
+  if (!trimmed) {
+    return value;
+  }
+
+  const dictionary = getDictionary(locale);
+  const normalized = trimmed.replace(/\s+/g, " ");
+  const translated = dictionary[trimmed] ?? dictionary[normalized];
+
+  if (!translated) {
+    return value;
+  }
+
+  const prefix = value.match(/^\s*/)?.[0] ?? "";
+  const suffix = value.match(/\s*$/)?.[0] ?? "";
+
+  return `${prefix}${translated}${suffix}`;
+}

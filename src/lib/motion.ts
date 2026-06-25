@@ -17,7 +17,7 @@ export const defaultRevealOptions = {
   variant: "fade-up",
   stagger: 0,
   delay: 0,
-  duration: 0.75,
+    duration: 0.9,
   ease: "power3.out",
   once: true,
 } satisfies Required<RevealOptions>;
@@ -52,7 +52,7 @@ export function getRevealFromVars(variant: RevealVariant) {
     default:
       return {
         opacity: 0.001,
-        y: 28,
+        y: 42,
       };
   }
 }

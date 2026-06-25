@@ -15,7 +15,7 @@ const publisher = {
   url: absoluteUrl("/"),
   logo: {
     "@type": "ImageObject",
-    url: absoluteUrl("/brand/logos/cr7.svg"),
+    url: absoluteUrl("/brand/cr7-logo.png"),
   },
 };
 
@@ -25,6 +25,7 @@ export function webSiteStructuredData(): StructuredData {
     "@id": absoluteUrl("/#website"),
     name: siteConfig.visualName,
     url: absoluteUrl("/"),
+    sameAs: [externalLinks.officialCristianoRonaldo],
     description: siteConfig.description,
     inLanguage: ["pt-BR", "en"],
     publisher: { "@id": absoluteUrl("/#organization") },

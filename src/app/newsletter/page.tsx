@@ -1,4 +1,4 @@
-import { NewsletterForm } from "@/components/newsletter-form";
+import { NewsletterForm } from "@/components/newsletter/newsletter-form";
 import { PageHero } from "@/components/page-hero";
 import { buildMetadata } from "@/lib/metadata";
 

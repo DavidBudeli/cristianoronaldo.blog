@@ -11,6 +11,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
+    "generate:icons": "node --no-warnings scripts/generate-icons-from-logo.ts",
     "check:i18n": "node --no-warnings scripts/check-i18n-mixed-language.ts",
     "audit": "npm run lint && npm run typecheck && npm run check:i18n && npm run build"
   },
@@ -27,6 +28,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "sharp": "^0.35.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

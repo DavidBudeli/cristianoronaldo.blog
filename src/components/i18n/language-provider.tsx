@@ -11,9 +11,8 @@ import {
 } from "react";
 import {
   defaultLocale,
-  englishTranslations,
   localeStorageKey,
-  portugueseTranslations,
+  translateText,
   type Locale,
 } from "@/lib/i18n";
 
@@ -31,25 +30,6 @@ const LanguageContext = createContext<LanguageContextValue>({
 
 function isLocale(value: string | null): value is Locale {
   return value === "en" || value === "pt-BR";
-}
-
-function translateValue(value: string, locale: Locale) {
-  const trimmed = value.trim();
-  if (!trimmed) {
-    return value;
-  }
-
-  const dictionary = locale === "pt-BR" ? portugueseTranslations : englishTranslations;
-  const normalized = trimmed.replace(/\s+/g, " ");
-  const translated = dictionary[trimmed] ?? dictionary[normalized];
-
-  if (!translated) {
-    return value;
-  }
-
-  const prefix = value.match(/^\s*/)?.[0] ?? "";
-  const suffix = value.match(/\s*$/)?.[0] ?? "";
-  return `${prefix}${translated}${suffix}`;
 }
 
 function shouldSkip(parent: ParentNode | null) {
@@ -81,20 +61,41 @@ function applyTranslations(locale: Locale) {
   }
 
   for (const node of textNodes) {
-    const nextValue = translateValue(node.textContent ?? "", locale);
+    const nextValue = translateText(node.textContent ?? "", locale);
     if (node.textContent !== nextValue) {
       node.textContent = nextValue;
     }
   }
 
   document
-    .querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input[placeholder], textarea[placeholder]")
+    .querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
+      "input[placeholder], textarea[placeholder]",
+    )
     .forEach((element) => {
-      const nextValue = translateValue(element.placeholder, locale);
+      const nextValue = translateText(element.placeholder, locale);
       if (element.placeholder !== nextValue) {
         element.placeholder = nextValue;
       }
     });
+
+  document
+    .querySelectorAll<HTMLElement>("[aria-label], [title], img[alt]")
+    .forEach((element) => {
+      for (const attribute of ["aria-label", "title", "alt"]) {
+        const currentValue = element.getAttribute(attribute);
+
+        if (!currentValue) {
+          continue;
+        }
+
+        const nextValue = translateText(currentValue, locale);
+        if (currentValue !== nextValue) {
+          element.setAttribute(attribute, nextValue);
+        }
+      }
+    });
+
+  document.title = translateText(document.title, locale);
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {

@@ -35,7 +35,7 @@ export default function OpenGraphImage() {
             color: "#ff5a1f",
           }}
         >
-          <span>CR7 Blog</span>
+          <span>Cristiano Ronaldo</span>
           <span>Official Blog</span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
@@ -48,7 +48,7 @@ export default function OpenGraphImage() {
               maxWidth: 850,
             }}
           >
-            Inside the Standard.
+            CR7 Blog
           </div>
           <div
             style={{
@@ -58,7 +58,7 @@ export default function OpenGraphImage() {
             }}
           />
           <div style={{ fontSize: 34, lineHeight: 1.25, color: "#c9c1b8", maxWidth: 780 }}>
-            Stories, records, career milestones and the mindset behind Cristiano Ronaldo&apos;s global football legacy.
+            Histórias, recordes, carreira e mentalidade por trás do legado global de Cristiano Ronaldo.
           </div>
         </div>
         <div style={{ display: "flex", gap: 18, fontSize: 24, color: "#f7c873" }}>

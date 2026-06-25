@@ -6,7 +6,7 @@ export const siteConfig = {
   visualName: "CR7 Blog",
   subtitle: "Official Blog",
   description:
-    "Stories, records, career milestones and the mindset behind Cristiano Ronaldo's global football legacy.",
+    "Histórias, recordes, marcos de carreira e a mentalidade por trás do legado global de Cristiano Ronaldo no futebol.",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   navigation: mainNavigation,
 };

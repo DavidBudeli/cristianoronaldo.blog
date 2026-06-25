@@ -2,6 +2,7 @@ import Link from "next/link";
 import { siteConfig } from "@/data/site";
 import Image from "next/image";
 import { ExternalLink } from "@/components/ui/external-link";
+import { externalLinks } from "@/data/external-links";
 
 const hyperagUrl = "https://hyperag.com.br/pt-BR";
 
@@ -10,16 +11,24 @@ export function SiteFooter() {
     <footer className="border-t border-white/10 bg-deep-black">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.2fr_0.8fr_0.8fr] lg:px-8">
         <div>
-          <Image
-            src="/brand/logos/cr7.svg"
-            alt="Logo oficial Cristiano Ronaldo"
-            width={130}
-            height={34}
-            className="h-9 w-auto brightness-0 invert"
-          />
-          <p className="mt-5 font-display text-3xl uppercase text-warm">
-            {siteConfig.visualName}
-          </p>
+          <a
+            href={externalLinks.officialCristianoRonaldo}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir site oficial de Cristiano Ronaldo"
+            className="group inline-flex flex-col"
+          >
+            <Image
+              src="/brand/logos/cr7.svg"
+              alt="Logo oficial Cristiano Ronaldo"
+              width={169}
+              height={30}
+              className="h-9 w-auto brightness-0 invert transition group-hover:scale-[1.025] group-hover:brightness-100"
+            />
+            <span className="mt-5 font-display text-3xl uppercase text-warm transition group-hover:text-brand-orange">
+              {siteConfig.visualName}
+            </span>
+          </a>
           <p className="mt-4 max-w-xl text-sm leading-7 text-muted">
             Stories, records, career milestones and the mindset behind Cristiano Ronaldo&apos;s global football legacy.
           </p>

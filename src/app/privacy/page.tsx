@@ -17,9 +17,10 @@ export default function PrivacyPage() {
       />
       <section className="mx-auto max-w-4xl px-4 py-14 sm:px-6 lg:px-8">
         <p className="text-lg leading-9 text-muted">
-          The newsletter form presents a local sign-up interaction in this
-          demo experience. It asks for an email address and topic preferences so
-          readers can choose the CR7 stories they want to follow.
+          The newsletter form sends your email, language and selected topic
+          preferences to Brevo through a server-side CR7 Blog API route. API
+          credentials stay on the server, and readers can unsubscribe from
+          future campaigns.
         </p>
       </section>
     </>

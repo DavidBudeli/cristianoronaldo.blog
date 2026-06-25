@@ -10,6 +10,7 @@ import { MagneticButton } from "@/components/motion/magnetic-button";
 import { NumberCounter } from "@/components/motion/number-counter";
 import { ParallaxLayer } from "@/components/motion/parallax-layer";
 import { Reveal } from "@/components/motion/reveal";
+import { TextReveal } from "@/components/motion/text-reveal";
 import { StatsDashboard } from "@/components/stats-dashboard";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { externalLinks } from "@/data/external-links";
@@ -39,9 +40,12 @@ export default function Home() {
             <p className="inline-flex border border-brand-orange bg-brand-orange px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.18em] text-white">
               Official Blog
             </p>
-            <h1 className="mt-7 max-w-4xl font-display text-6xl uppercase leading-[0.88] text-warm sm:text-8xl lg:text-9xl">
+            <TextReveal
+              as="h1"
+              className="mt-7 max-w-4xl font-display text-6xl uppercase leading-[0.88] text-warm sm:text-8xl lg:text-9xl"
+            >
               Inside the Standard.
-            </h1>
+            </TextReveal>
             <p className="mt-6 max-w-2xl text-base leading-8 text-muted sm:text-lg">
               Stories, records, career milestones and the mindset behind Cristiano Ronaldo&apos;s global football legacy.
             </p>

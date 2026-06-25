@@ -1,4 +1,5 @@
 import { goalSummary, goalsByCompetition, goalsByTeam } from "@/data/goals";
+import { externalLinks } from "@/data/external-links";
 import { recordItems } from "@/data/records";
 import { siteConfig } from "@/data/site";
 import { mainStats } from "@/data/stats";
@@ -165,7 +166,7 @@ export function goalsDatasetStructuredData(): StructuredData {
     name: "Cristiano Ronaldo Goal Archive",
     description:
       "Public Cristiano Ronaldo goal totals by team, competition, year and milestone.",
-    url: absoluteUrl("/goals"),
+    url: externalLinks.perplexityRonaldoGoals,
     inLanguage: ["pt-BR", "en"],
     keywords: ["Cristiano Ronaldo goals", "CR7 goals", "goal archive"],
     creator: publisher,

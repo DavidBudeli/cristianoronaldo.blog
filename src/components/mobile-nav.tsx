@@ -2,10 +2,17 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useLanguage } from "@/components/i18n/language-provider";
+import { ExternalLink } from "@/components/ui/external-link";
 import { siteConfig } from "@/data/site";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
+  const { locale } = useLanguage();
+  const goalsAriaLabel =
+    locale === "pt-BR"
+      ? "Abrir experiência interativa de gols de Cristiano Ronaldo na Perplexity"
+      : "Open Cristiano Ronaldo interactive goals experience on Perplexity";
 
   return (
     <div className="md:hidden">
@@ -24,16 +31,28 @@ export function MobileNav() {
           className="mobile-menu-enter absolute left-4 right-4 top-[78px] z-40 border border-white/12 bg-deep-black/95 p-4 shadow-2xl shadow-black/50"
         >
           <nav className="grid gap-2" aria-label="Mobile navigation">
-            {siteConfig.navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="border border-white/8 bg-white/[0.03] px-4 py-3 text-sm font-medium text-warm transition hover:border-gold hover:text-gold"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {siteConfig.navigation.map((item) =>
+              item.external ? (
+                <ExternalLink
+                  key={item.href}
+                  href={item.href}
+                  ariaLabel={goalsAriaLabel}
+                  onClick={() => setOpen(false)}
+                  className="border border-white/8 bg-white/[0.03] px-4 py-3 text-sm font-medium text-warm transition hover:border-gold hover:text-gold"
+                >
+                  {item.label}
+                </ExternalLink>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="border border-white/8 bg-white/[0.03] px-4 py-3 text-sm font-medium text-warm transition hover:border-gold hover:text-gold"
+                >
+                  {item.label}
+                </Link>
+              ),
+            )}
             <Link
               href="/search"
               onClick={() => setOpen(false)}

@@ -2,6 +2,7 @@ import { MagneticButton } from "@/components/motion/magnetic-button";
 import { NumberCounter } from "@/components/motion/number-counter";
 import { Reveal } from "@/components/motion/reveal";
 import { PageHero } from "@/components/page-hero";
+import { externalLinks } from "@/data/external-links";
 import { recordItems } from "@/data/records";
 import { JsonLd } from "@/lib/json-ld";
 import { buildMetadata } from "@/lib/metadata";
@@ -57,14 +58,18 @@ export default function RecordsPage() {
         <Reveal className="mt-10 border border-white/10 bg-card p-6 sm:flex sm:items-center sm:justify-between">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-orange">
-              Goal archive
+              Interactive goals
             </p>
             <h2 className="mt-3 font-display text-4xl uppercase leading-none text-warm">
-              Explore the goals behind the records.
+              Open interactive goals experience.
             </h2>
           </div>
-          <MagneticButton href="/goals" className="mt-6 px-5 py-3 sm:mt-0">
-            Open Goal Universe
+          <MagneticButton
+            href={externalLinks.perplexityRonaldoGoals}
+            className="mt-6 px-5 py-3 sm:mt-0"
+            ariaLabel="Open Cristiano Ronaldo interactive goals experience on Perplexity"
+          >
+            Explore all goals
           </MagneticButton>
         </Reveal>
       </section>

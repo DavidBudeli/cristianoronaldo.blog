@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/data/site";
 import Image from "next/image";
+import { ExternalLink } from "@/components/ui/external-link";
 
 const hyperagUrl = "https://hyperag.com.br/pt-BR";
 
@@ -28,11 +29,21 @@ export function SiteFooter() {
             Explore
           </p>
           <div className="mt-4 grid gap-3 text-sm text-muted">
-            {siteConfig.navigation.slice(0, 5).map((item) => (
-              <Link key={item.href} href={item.href} className="transition hover:text-gold">
-                {item.label}
-              </Link>
-            ))}
+            {siteConfig.navigation.slice(0, 5).map((item) =>
+              item.external ? (
+                <ExternalLink
+                  key={item.href}
+                  href={item.href}
+                  className="transition hover:text-gold"
+                >
+                  {item.label}
+                </ExternalLink>
+              ) : (
+                <Link key={item.href} href={item.href} className="transition hover:text-gold">
+                  {item.label}
+                </Link>
+              ),
+            )}
           </div>
         </div>
         <div>

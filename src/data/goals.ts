@@ -1,3 +1,5 @@
+import { externalLinks } from "@/data/external-links";
+
 export type GoalSource = {
   id: string;
   label: string;
@@ -60,7 +62,7 @@ export const goalSources: GoalSource[] = [
     id: "perplexity-ronaldo",
     label: "Perplexity Ronaldo page",
     publisher: "Perplexity",
-    url: "https://www.perplexity.ai/ronaldo/pt-br",
+    url: externalLinks.perplexityRonaldoGoals,
     lastChecked: "2026-06-24",
     reliability: "reference",
   },

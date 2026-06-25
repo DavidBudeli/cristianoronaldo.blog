@@ -6,6 +6,7 @@ import { StatsHero } from "@/components/stats/stats-hero";
 import { UpdatePolicy } from "@/components/stats/update-policy";
 import { MagneticButton } from "@/components/motion/magnetic-button";
 import { Reveal } from "@/components/motion/reveal";
+import { externalLinks } from "@/data/external-links";
 import {
   awardsHonors,
   clubBreakdown,
@@ -46,10 +47,14 @@ export default function StatsPage() {
       <section className="border-b border-white/10 px-4 py-8 sm:px-6 lg:px-8">
         <Reveal className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-2xl text-sm leading-7 text-muted">
-            Want the scoring archive behind the headline total?
+            Open interactive goals experience
           </p>
-          <MagneticButton href="/goals" className="w-fit px-5 py-3">
-            Open Goal Universe
+          <MagneticButton
+            href={externalLinks.perplexityRonaldoGoals}
+            className="w-fit px-5 py-3"
+            ariaLabel="Open Cristiano Ronaldo interactive goals experience on Perplexity"
+          >
+            Explore all goals
           </MagneticButton>
         </Reveal>
       </section>

@@ -7,10 +7,17 @@ import { useEffect, useState } from "react";
 import { siteConfig } from "@/data/site";
 import { MobileNav } from "@/components/mobile-nav";
 import { LanguageSwitcher } from "@/components/i18n/language-switcher";
+import { useLanguage } from "@/components/i18n/language-provider";
+import { ExternalLink } from "@/components/ui/external-link";
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const { locale } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
+  const goalsAriaLabel =
+    locale === "pt-BR"
+      ? "Abrir experiência interativa de gols de Cristiano Ronaldo na Perplexity"
+      : "Open Cristiano Ronaldo interactive goals experience on Perplexity";
 
   useEffect(() => {
     function onScroll() {
@@ -49,20 +56,33 @@ export function SiteHeader() {
           </span>
         </Link>
         <nav className="hidden items-center gap-6 md:flex" aria-label="Main">
-          {siteConfig.navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={pathname === item.href ? "page" : undefined}
-              className={`relative text-xs font-semibold uppercase tracking-[0.16em] transition after:absolute after:-bottom-2 after:left-0 after:h-px after:bg-brand-orange after:transition-[width] after:duration-300 hover:text-gold ${
-                pathname === item.href
-                  ? "text-gold after:w-full"
-                  : "text-muted after:w-0 hover:after:w-full"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {siteConfig.navigation.map((item) => {
+            const navClassName = `relative inline-flex items-center text-xs font-semibold uppercase tracking-[0.16em] transition after:absolute after:-bottom-2 after:left-0 after:h-px after:bg-brand-orange after:transition-[width] after:duration-300 hover:text-gold ${
+              pathname === item.href
+                ? "text-gold after:w-full"
+                : "text-muted after:w-0 hover:after:w-full"
+            }`;
+
+            return item.external ? (
+              <ExternalLink
+                key={item.href}
+                href={item.href}
+                ariaLabel={goalsAriaLabel}
+                className={navClassName}
+              >
+                {item.label}
+              </ExternalLink>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={pathname === item.href ? "page" : undefined}
+                className={navClassName}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
         <div className="hidden items-center gap-3 md:flex">
           <Link

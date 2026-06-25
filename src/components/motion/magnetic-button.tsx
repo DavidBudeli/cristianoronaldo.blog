@@ -9,6 +9,7 @@ type MagneticButtonProps = {
   children: React.ReactNode;
   className?: string;
   variant?: "primary" | "ghost";
+  ariaLabel?: string;
 };
 
 export function MagneticButton({
@@ -16,8 +17,10 @@ export function MagneticButton({
   children,
   className = "",
   variant = "primary",
+  ariaLabel,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement>(null);
+  const isExternal = href.startsWith("http");
   const baseClass =
     "inline-flex rounded-full px-6 py-4 text-xs font-bold uppercase tracking-[0.16em] transition will-change-transform";
   const variantClass =
@@ -78,8 +81,25 @@ export function MagneticButton({
     };
   }, []);
 
+  const resolvedClassName = `${baseClass} ${variantClass} ${className}`;
+
+  if (isExternal) {
+    return (
+      <a
+        ref={ref}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={ariaLabel}
+        className={resolvedClassName}
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <Link ref={ref} href={href} className={`${baseClass} ${variantClass} ${className}`}>
+    <Link ref={ref} href={href} aria-label={ariaLabel} className={resolvedClassName}>
       {children}
     </Link>
   );

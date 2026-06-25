@@ -11,7 +11,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "audit": "npm run lint && npm run typecheck && npm run build"
+    "check:i18n": "node --no-warnings scripts/check-i18n-mixed-language.ts",
+    "audit": "npm run lint && npm run typecheck && npm run check:i18n && npm run build"
   },
   "dependencies": {
     "gsap": "^3.15.0",

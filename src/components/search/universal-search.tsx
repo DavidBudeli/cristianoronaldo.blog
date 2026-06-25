@@ -9,8 +9,10 @@ import type {
   GoalLogItem,
   MilestoneGoal,
 } from "@/data/goals";
+import { externalLinks } from "@/data/external-links";
 import type { RecordItem } from "@/data/records";
 import type { CareerPhase } from "@/data/career";
+import { ExternalLink } from "@/components/ui/external-link";
 import type { Article } from "@/types/content";
 
 type UniversalSearchProps = {
@@ -105,7 +107,7 @@ export function UniversalSearch({
       group: "Goals",
       title: `${team.team} goals`,
       excerpt: `${team.goals} goals across ${team.period}.`,
-      href: "/goals#goal-log",
+      href: externalLinks.perplexityRonaldoGoals,
       meta: team.type,
       keywords: [team.team, team.period, team.type, String(team.goals)],
     }));
@@ -114,7 +116,7 @@ export function UniversalSearch({
       group: "Goals",
       title: competition.competition,
       excerpt: `${competition.goals} tracked goals in this competition archive.`,
-      href: "/goals#goal-log",
+      href: externalLinks.perplexityRonaldoGoals,
       meta: "Competition",
       keywords: [competition.competition, String(competition.goals)],
     }));
@@ -123,7 +125,7 @@ export function UniversalSearch({
       group: "Goals",
       title: goal.milestone,
       excerpt: `${goal.team} vs ${goal.opponent} in ${goal.competition}. ${goal.description}`,
-      href: "/goals#goal-log",
+      href: externalLinks.perplexityRonaldoGoals,
       meta: goal.date,
       keywords: [goal.team, goal.opponent, goal.competition, goal.milestone],
     }));
@@ -132,7 +134,7 @@ export function UniversalSearch({
       group: "Goals",
       title: goal.goalNumber > 0 ? `Goal ${goal.goalNumber}` : goal.competition,
       excerpt: `${goal.team} vs ${goal.opponent}. ${goal.notes ?? ""}`,
-      href: "/goals#goal-log",
+      href: externalLinks.perplexityRonaldoGoals,
       meta: `${goal.date} / ${goal.competition}`,
       keywords: [
         goal.team,
@@ -247,23 +249,42 @@ export function UniversalSearch({
                 {group.group}
               </h2>
               <div className="mt-4 grid gap-4">
-                {group.items.map((item) => (
-                  <Link
-                    key={`${item.group}-${item.href}-${item.title}`}
-                    href={item.href}
-                    className="border border-white/10 bg-card p-5 transition hover:border-gold focus-visible:border-gold focus-visible:outline-none"
-                  >
-                    <span className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-brand-orange">
-                      {item.meta}
-                    </span>
-                    <p className="mt-3 font-display text-3xl uppercase leading-none text-warm">
-                      {item.title}
-                    </p>
-                    <p className="mt-3 text-sm leading-6 text-muted">
-                      {item.excerpt}
-                    </p>
-                  </Link>
-                ))}
+                {group.items.map((item) =>
+                  item.href.startsWith("http") ? (
+                    <ExternalLink
+                      key={`${item.group}-${item.href}-${item.title}`}
+                      href={item.href}
+                      ariaLabel="Open Cristiano Ronaldo interactive goals experience on Perplexity"
+                      className="block border border-white/10 bg-card p-5 transition hover:border-gold focus-visible:border-gold focus-visible:outline-none"
+                    >
+                      <span className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-brand-orange">
+                        {item.meta}
+                      </span>
+                      <span className="mt-3 block font-display text-3xl uppercase leading-none text-warm">
+                        {item.title}
+                      </span>
+                      <span className="mt-3 block text-sm leading-6 text-muted">
+                        {item.excerpt}
+                      </span>
+                    </ExternalLink>
+                  ) : (
+                    <Link
+                      key={`${item.group}-${item.href}-${item.title}`}
+                      href={item.href}
+                      className="border border-white/10 bg-card p-5 transition hover:border-gold focus-visible:border-gold focus-visible:outline-none"
+                    >
+                      <span className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-brand-orange">
+                        {item.meta}
+                      </span>
+                      <p className="mt-3 font-display text-3xl uppercase leading-none text-warm">
+                        {item.title}
+                      </p>
+                      <p className="mt-3 text-sm leading-6 text-muted">
+                        {item.excerpt}
+                      </p>
+                    </Link>
+                  ),
+                )}
               </div>
             </section>
           ) : null,

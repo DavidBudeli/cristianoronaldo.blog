@@ -12,6 +12,7 @@ import { ParallaxLayer } from "@/components/motion/parallax-layer";
 import { Reveal } from "@/components/motion/reveal";
 import { StatsDashboard } from "@/components/stats-dashboard";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { externalLinks } from "@/data/external-links";
 import { europeanRecords } from "@/data/stats";
 import { goalSummary, goalsByYear, milestoneGoals } from "@/data/goals";
 import { editorialPillars } from "@/data/site";
@@ -87,8 +88,16 @@ export default function Home() {
             <p className="mt-6 font-mono text-5xl font-bold leading-none text-brand-orange">
               <NumberCounter value={goalSummary.totalGoals.toLocaleString("en-US")} />
             </p>
+            <p className="mt-4 text-sm leading-7 text-muted">
+              Open interactive goals experience
+            </p>
             <div className="mt-8">
-              <MagneticButton href="/goals">Open Goal Universe</MagneticButton>
+              <MagneticButton
+                href={externalLinks.perplexityRonaldoGoals}
+                ariaLabel="Open Cristiano Ronaldo interactive goals experience on Perplexity"
+              >
+                Explore all goals
+              </MagneticButton>
             </div>
           </Reveal>
           <ParallaxLayer y={-8}>

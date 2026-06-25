@@ -11,6 +11,7 @@ import {
   getCategoryTitle,
   getRelatedArticles,
 } from "@/lib/articles";
+import { externalLinks } from "@/data/external-links";
 import { getSourcesByIds } from "@/data/sources";
 import type { Article } from "@/types/content";
 
@@ -101,8 +102,12 @@ export function ArticleLayout({ article }: { article: Article }) {
           </div>
           {article.tags.includes("goals") ? (
             <div className="mt-8">
-              <MagneticButton href="/goals" className="px-5 py-3">
-                Open Goal Universe
+              <MagneticButton
+                href={externalLinks.perplexityRonaldoGoals}
+                className="px-5 py-3"
+                ariaLabel="Open Cristiano Ronaldo interactive goals experience on Perplexity"
+              >
+                Explore all goals
               </MagneticButton>
             </div>
           ) : null}
